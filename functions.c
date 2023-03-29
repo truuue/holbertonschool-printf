@@ -1,45 +1,41 @@
-#include "holberton.h"
+#include "main.h"
 
 /**
- * print_char - Imprime un caractère sur la sortie standard
- * @args: Liste d'arguments
- *
- * Return: Nombre de caractères imprimés
- */
+* print_char - Prints a single character
+* @args: va_list containing a char argument to be printed
+* Return: The number of characters printed
+*/
+
 int print_char(va_list args)
 {
-char c = va_arg(args, int);
-return (write(1, &c, 1));
+putchar(va_arg(args, int));
+return (1);
 }
-
 /**
- * print_string - Imprime une chaîne de caractères sur la sortie standard
- * @args: Liste d'arguments
- *
- * Return: Nombre de caractères imprimés
- */
+* print_string - Prints a string
+* @args: va_list containing a argument
+* Return: The number of characters printed
+*/
+
 int print_string(va_list args)
 {
-char *str = va_arg(args, char *);
-int len = 0;
-
-if (str == NULL)
-str = "(null)";
-
-while (str[len] != '\0')
-len++;
-
-return (write(1, str, len));
-}
-
-/**
- * print_percent - Imprime un caractère '%' sur la sortie standard
- * @args: Liste d'arguments
- *
- * Return: Nombre de caractères imprimés
- */
-int print_percent(va_list args)
+const char *str = va_arg(args, const char *);
+int printed_chars = 0;
+while (*str)
 {
-(void)args;
-return (write(1, "%", 1));
+putchar(*str++);
+printed_chars++;
+}
+return (printed_chars);
+}
+/**
+ * print_int - Print an integer
+ * @args: A va_list containing the integer to print
+ *
+ * Return: The number of characters printed
+ */
+int print_int(va_list args)
+{
+int n = va_arg(args, int);
+return (printf("%d", n));
 }

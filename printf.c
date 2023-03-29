@@ -1,46 +1,32 @@
-#include "holberton.h"
+#include "main.h"
+
 /**
- * _printf - Imprime une sortie formatée sur la sortie standard
- * @format: Chaîne de formatage
+ * handle_format_specifier - handles a single format specifier
+ * @specifier: the format specifier character
+ * @args: a va_list containing the arguments for the format specifier
  *
- * Return: Nombre de caractères imprimés (hors octet nul)
+ * Return: The number of characters printed
  */
-int _printf(const char *format, ...)
+
+int handle_format_specifier(char specifier, va_list args)
 {
-va_list args;
-int i = 0, len = 0;
-if (format == NULL)
-return (-1);
-va_start(args, format);
-while (format[i] != '\0')
+print_handler print_hand[] = {
+{'c', print_char},
+{'s', print_string},
+{'%', print_percent},
+{'i', print_int},
+{'d', print_int},
+{0, NULL}
+};
+
+int j = 0;
+while (print_hand[j].type)
 {
-if (format[i] == '%')
+if (print_hand[j].type == specifier)
 {
-i++;
-switch (format[i])
-{
-case 'c':
-len += print_char(args);
-break;
-case 's':
-len += print_string(args);
-break;
-case '%':
-len += print_percent(args);
-break;
-default:
-len += write(1, "%", 1);
-len += write(1, &format[i], 1);
-break;
+return (print_hand[j].func(args));
 }
-i++;
+j++;
 }
-else
-{
-len += write(1, &format[i], 1);
-i++;
-}
-}
-va_end(args);
-return (len);
+return (0);
 }
