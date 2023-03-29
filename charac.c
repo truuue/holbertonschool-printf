@@ -16,7 +16,7 @@ print_handler print_hand[] = {
 {'%', print_percent},
 {'i', print_int},
 {'d', print_int},
-{0, NULL}
+{'\0', NULL}
 };
 
 int j = 0;
