@@ -1,36 +1,33 @@
-#include <stdarg.h>
 #include "main.h"
 
-
 /**
-* _printf - print output to stdout
-* @format: A string containing all characteres
-* Return: the number of charac printed
-*/
+ * handle_format_specifier - handles a single format specifier
+ * @specifier: the format specifier character
+ * @args: a va_list containing the arguments for the format specifier
+ *
+ * Return: The number of characters printed
+ */
 
-int _printf(const char *format, ...)
+int handle_format_specifier(char specifier, va_list args)
 {
-va_list args;
-int i = 0, printed_chars = 0;
+print_handler print_hand[] = {
+{'c', print_char},
+{'s', print_str},
+{'%', print_percent},
+{'i', print_int},
+{'d', print_int},
+{'\0', NULL}
+};
 
-if (format == NULL)
-return (-1);
+int j = 0;
+while (print_hand[j].type)
+{
+if (print_hand[j].type == specifier)
+{
+return (print_hand[j].func(args));
+}
+j++;
+}
 
-va_start(args, format);
-while (format && format[i])
-{
-if (format[i] == '%')
-{
-i++;
-printed_chars += handle_format_specifier(format[i], args);
-}
-else
-{
-putchar(format[i]);
-printed_chars++;
-}
-i++;
-}
-va_end(args);
-return (printed_chars);
+return (0);
 }
