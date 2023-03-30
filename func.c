@@ -7,7 +7,7 @@
  */
 int _putchar(char c)
 {
-  return (write(1, &c, 1));
+return (write(1, &c, 1));
 }
 
 /**
@@ -17,9 +17,9 @@ int _putchar(char c)
  */
 int print_char(va_list args)
 {
-	char c = va_arg(args, int);
+char c = va_arg(args, int);
 
-	return (_putchar(c));
+return (_putchar(c));
 }
 
 /**
@@ -29,20 +29,20 @@ int print_char(va_list args)
  */
 int print_str(va_list args)
 {
-	char *s = va_arg(args, char *);
-	char *null = "(null)";
-	int count = 0;
+char *s = va_arg(args, char *);
+char *null = "(null)";
+int count = 0;
 
-	if (s == NULL)
-		return (write(1, null, strlen(null)));
+if (s == NULL)
+return (write(1, null, strlen(null)));
 
-	while (*s != '\0')
-	{
-		count += _putchar(*s);
-		s++;
-	}
+while (*s != '\0')
+{
+count += _putchar(*s);
+s++;
+}
 
-	return (count);
+return (count);
 }
 
 /**
@@ -52,9 +52,9 @@ int print_str(va_list args)
  */
 int print_perc(va_list args)
 {
-  (void)args;
-  _putchar('%');
-  return (1);
+(void)args;
+_putchar('%');
+return (1);
 }
 
 /**
@@ -64,17 +64,17 @@ int print_perc(va_list args)
  */
 int reverse_str(char *s)
 {
-  int i, x;
-  char temp;
-  x = strlen(s) - 1;
-  
-  for (i = 0; i < x; i++, x--)
-  {
-    temp = s[i];
-    s[i] = s[x];
-    s[x] = temp;
-  }
-  return 0;
+int i, x;
+char temp;
+x = strlen(s) - 1;
+
+for (i = 0; i < x; i++, x--)
+{
+temp = s[i];
+s[i] = s[x];
+s[x] = temp;
+}
+return 0;
 }
 
 /**
@@ -84,18 +84,18 @@ int reverse_str(char *s)
  */
 int print_unsigned(va_list args)
 {
-	unsigned int n = va_arg(args, unsigned int);
-	unsigned int div = 1;
-	int len = 0;
+unsigned int n = va_arg(args, unsigned int);
+unsigned int div = 1;
+int len = 0;
 
-	while (n / div > 9)
-		div *= 10;
-	while (div != 0)
-	{
-		len += _putchar((n / div) % 10 + '0');
-		div /= 10;
-	}
-	return (len);
+while (n / div > 9)
+div *= 10;
+while (div != 0)
+{
+len += _putchar((n / div) % 10 + '0');
+div /= 10;
+}
+return (len);
 }
 
 /**
@@ -105,27 +105,27 @@ int print_unsigned(va_list args)
  */
 int print_address(va_list args)
 {
-	void *p = va_arg(args, void *);
-	unsigned long int n = (unsigned long int) p;
-	unsigned long int hex = n;
-	int len = 0;
+void *p = va_arg(args, void *);
+unsigned long int n = (unsigned long int) p;
+unsigned long int hex = n;
+int len = 0;
 
-	len += _putchar('0');
-	len += _putchar('x');
-	if (hex == 0)
-	{
-		len += _putchar('0');
-		return (len);
-	}
-	while (hex != 0)
-	{
-		if (hex % 16 < 10)
-			len += _putchar(hex % 16 + '0');
-		else
-			len += _putchar(hex % 16 + 'a' - 10);
-		hex /= 16;
-	}
-	return (len);
+len += _putchar('0');
+len += _putchar('x');
+if (hex == 0)
+{
+len += _putchar('0');
+return (len);
+}
+while (hex != 0)
+{
+if (hex % 16 < 10)
+len += _putchar(hex % 16 + '0');
+else
+len += _putchar(hex % 16 + 'a' - 10);
+hex /= 16;
+}
+return (len);
 }
 
 /**
@@ -135,17 +135,17 @@ int print_address(va_list args)
  */
 int print_hex(unsigned long int n)
 {
-  int len = 0;
+int len = 0;
 
-  if (n / 16)
-    len += print_hex(n / 16);
+if (n / 16)
+len += print_hex(n / 16);
 
-  if (n % 16 < 10)
-    len += _putchar(n % 16 + '0');
-  else
-    len += _putchar(n % 16 + 'a' - 10);
+if (n % 16 < 10)
+len += _putchar(n % 16 + '0');
+else
+len += _putchar(n % 16 + 'a' - 10);
 
-  return (len);
+return (len);
 }
 
 /**
@@ -155,22 +155,22 @@ int print_hex(unsigned long int n)
  */
 int print_ptr(va_list args)
 {
-  void *p = va_arg(args, void *);
-  unsigned long int num = (unsigned long int)p;
-  int len = 0;
+void *p = va_arg(args, void *);
+unsigned long int num = (unsigned long int)p;
+int len = 0;
 
-  len += _putchar('0');
-  len += _putchar('x');
+len += _putchar('0');
+len += _putchar('x');
 
-  if (num == 0)
-  {
-    len += _putchar('0');
-    return (len);
-  }
+if (num == 0)
+{
+len += _putchar('0');
+return (len);
+}
 
-  len += print_hex(num);
+len += print_hex(num);
 
-  return (len);
+return (len);
 }
 
 /**
@@ -180,14 +180,14 @@ int print_ptr(va_list args)
  */
 int print_uint(unsigned int n)
 {
-  int len = 0;
+int len = 0;
 
-  if (n / 10)
-    len += print_uint(n / 10);
+if (n / 10)
+len += print_uint(n / 10);
 
-  len += _putchar(n % 10 + '0');
+len += _putchar(n % 10 + '0');
 
-  return (len);
+return (len);
 }
 
 /**
@@ -197,19 +197,19 @@ int print_uint(unsigned int n)
  */
 int print_int(va_list args)
 {
-  int n = va_arg(args, int);
-  int len = 0;
-  unsigned int num;
+int n = va_arg(args, int);
+int len = 0;
+unsigned int num;
 
-  if (n < 0)
-  {
-    len += _putchar('-');
-    num = -n;
-  }
-  else
-    num = n;
+if (n < 0)
+{
+len += _putchar('-');
+num = -n;
+}
+else
+num = n;
 
-  len += print_uint(num);
+len += print_uint(num);
 
-  return (len);
+return (len);
 }
