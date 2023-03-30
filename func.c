@@ -74,7 +74,7 @@ temp = s[i];
 s[i] = s[x];
 s[x] = temp;
 }
-return 0;
+return (0);
 }
 
 /**
