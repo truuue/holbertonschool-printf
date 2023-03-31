@@ -78,8 +78,56 @@ int main(void)
 }
 ```
 
+## Flowchart
+
+                    +----------------------+
+                    |        Start         |
+                    +----------------------+
+                               |
+                               v
+                 +----------------------------+
+                 |  Check if format is empty  |
+                 +----------------------------+
+                               |
+                    +----------+------------+
+                    |                       |
+                    v                       v
+              +-----------------------------------+
+              | Return -1 if empty, else continue |
+              +-----------------------------------+
+                    |                       |
+                    v                       v
+      +------------------------+  +-----------------------+
+      |    Iterate through     |  |     Print character   |
+      |   format characters    |  |   when format is not  |
+      |      until null        |  |    a percent symbol   |
+      +------------------------+  +-----------------------+
+                 |                         |
+                 v                         v
+         +---------------+        +------------------+
+         |   Check if    |        |  Print percent   |
+         | character     |        |    symbol        |
+         | after percent |        +------------------+
+         | is valid      |                 |
+         +---------------+                 v
+           +----------------------------------------+
+           | Find correct print function for format |
+           +----------------------------------------+
+                               |
+                +--------------+-------------+
+                |                            |
+                v                            v
+        +-----------------+         +------------------+
+        |   Print char    |         |   Print string   |
+        +-----------------+         +------------------+
+                |                            |
+                v                            v
+        +-----------------+         +------------------+
+        |  Print integer  |         |   Print percent  |
+        +-----------------+         +------------------+
+
 ### AUTHORS
 
 **Djamaldine Mohamed and Noah Vernhet**
 
-![Logo Holberton School](https://github.com/truuue/holbertonschool-printf/master/Holbertonschool-logo.png)
+![Logo Holberton School](https://github.com/truuue/holbertonschool-printf/blob/master/Holbertonschool-logo.png)
