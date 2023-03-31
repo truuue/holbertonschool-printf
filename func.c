@@ -81,7 +81,7 @@ return (0);
  * print_unsigned - Prints an unsigned integer
  * @args: Argument list containing the integer to print
  * Return: Number of characters printed
- *
+ */
 int print_unsigned(va_list args)
 {
 unsigned int n = va_arg(args, unsigned int);
@@ -97,7 +97,6 @@ div /= 10;
 }
 return (len);
 }
-*/
 
 /**
  * print_address - Prints the address of a pointer argument

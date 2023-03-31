@@ -16,7 +16,7 @@ int print_uint(unsigned int n);
 int print_int(va_list);
 int print_hex(unsigned long int n);
 int print_ptr(va_list args);
-/*int print_unsigned(va_list args);*/
+int print_unsigned(va_list args);
 int print_address(va_list args);
 
 /**
