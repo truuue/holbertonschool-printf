@@ -128,6 +128,6 @@ int main(void)
 
 ### AUTHORS
 
-**Djamaldine Mohamed and Noah Vernhet**
+**Djamaldine Mohamed and Noah Vernhet** for :
 
 ![Logo Holberton School](https://github.com/truuue/holbertonschool-printf/blob/master/Holbertonschool-logo.png)
